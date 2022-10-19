@@ -1,5 +1,5 @@
 #include <iostream>
-#include <mavsdk/mavsdk.h>
+#include <mavsdk.h>
 #include <memory>
 #include <plugins/param/param.h>
 #include <plugins/telemetry/telemetry.h>

@@ -23,10 +23,16 @@ add_compile_definitions(DEBUG)
 
 set(BUILD_TESTS OFF)
 set(BUILD_SHARED_LIBS OFF)
+
+# set(MAVLINK_HEADERS ON)
 RequireContent(
     mavsdk
     GIT_REPOSITORY "https://github.com/mavlink/MAVSDK.git"
-    GIT_TAG "v1.4.7"
+    GIT_TAG "main"
+)
+
+add_compile_options(
+    -Wno-address-of-packed-member
 )
 
 include(AddExecutable)
@@ -38,7 +44,8 @@ executable(
 target_include_directories(
     ${CMAKE_PROJECT_NAME} PRIVATE
     ${mavsdk_SOURCE_DIR}/plugins # documentation says i should be able to add something like mavsdk_[plugin] to my link libraries but doesn't seem to work with local build vs global shared
-    build/_deps/mavsdk-build/third_party/mavlink/mavlink/src/mavlink/include # unfortunately the mavlink passthrough plugin is expecting mavlink on a specific path
+    ${mavsdk_BINARY_DIR}/src/mavsdk/core/include/mavsdk
+    ${mavsdk_BINARY_DIR}/third_party/install/include
 )
 
 target_link_libraries(
