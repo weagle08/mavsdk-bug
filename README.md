@@ -28,4 +28,5 @@ $ gdb ./build/mavsdk-bug
 > n # observe seg fault originating in mavsdk stack
 ```
 
+**View GDB logging and trace in gdb.txt**
 
