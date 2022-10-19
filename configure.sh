@@ -19,4 +19,4 @@ if [ "${CLEAN}" == "1" ]; then
     cmake --build ./build --target clean
 fi
 
-cmake ${BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=install ${BUILD_OFFLINE} -S ./ -B ./build
+cmake ${BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=install -DBUILD_TESTS=OFF ${BUILD_OFFLINE} -S ./ -B ./build
